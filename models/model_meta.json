@@ -1,0 +1,20 @@
+{
+  "feature_cols": [
+    "innings",
+    "over",
+    "ball",
+    "runs_scored",
+    "wickets_fallen",
+    "balls_remaining",
+    "target",
+    "runs_required",
+    "current_run_rate",
+    "required_run_rate",
+    "run_rate_diff",
+    "runs_last_3_overs",
+    "wickets_last_3_overs"
+  ],
+  "log_loss": 0.4907,
+  "roc_auc": 0.836,
+  "brier": 0.1651
+}
