@@ -65,10 +65,14 @@ app.add_middleware(
 
 @lru_cache(maxsize=1)
 def get_model():
-    """Load model bundle (RF + isotonic calibration) once and cache."""
+    """Load model bundle (RF + isotonic calibration) once and cache.
+    If model not found, train from scratch using features_labeled.parquet."""
     model_path = MODELS_DIR / "model_bundle.pkl"
     if not model_path.exists():
-        raise RuntimeError(f"Model not found at {model_path}")
+        print("Model not found — training from scratch...")
+        from backend.train_on_startup import train_and_save
+        MODELS_DIR.mkdir(parents=True, exist_ok=True)
+        train_and_save(str(model_path))
     bundle = joblib.load(model_path)
     return bundle["rf"], bundle["iso"]
 
