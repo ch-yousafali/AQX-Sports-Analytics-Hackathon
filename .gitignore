@@ -1,8 +1,7 @@
 .venv/
 __pycache__/
 *.pyc
-data/processed/
-models/model_bundle.pkl
+data/raw/
+data/processed/*.parquet
 frontend/node_modules/
 .env
-*.parquet
